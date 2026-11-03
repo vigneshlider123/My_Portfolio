@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Vignesh M | Frontend Developer</title>
+<meta name="description" content="Portfolio of Vignesh M, Frontend Developer building responsive React JS web apps and React Native mobile apps.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700;800&family=DM+Sans:wght@400;500;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#ECEFFF; --surface:#FFFFFF; --ink:#0F1B3D; --muted:#5B6585; --line:#DDE3F0;
+  --blue:#2F5BFF; --blue-soft:#E6ECFF; --orange:#FF8A3D; --teal:#12B5A6; --pink:#FF5C8A; --violet:#7B4DFF; --code:#0F1B3D;
+  --display:'Bricolage Grotesque',system-ui,sans-serif; --body:'DM Sans',system-ui,sans-serif; --mono:'JetBrains Mono',ui-monospace,monospace;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:72px}
+body{font-family:var(--body);background:var(--bg);color:var(--ink);line-height:1.65;font-size:17px}
+a{color:inherit;text-decoration:none}
+:focus-visible{outline:3px solid var(--blue);outline-offset:3px;border-radius:6px}
+.wrap{max-width:1120px;margin:0 auto;padding:0 24px}
+section{padding:72px 0}
+h1,h2,h3{font-family:var(--display);line-height:1.1;letter-spacing:-.02em}
+h2{font-size:clamp(2rem,4vw,2.9rem);margin-bottom:12px}
+.lead{color:var(--muted);max-width:60ch;margin-bottom:36px}
+
+/* nav */
+header{position:sticky;top:0;z-index:50;background:rgba(236,239,255,.85);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+nav{display:flex;justify-content:space-between;align-items:center;height:64px}
+.logo{font-family:var(--display);font-weight:800;font-size:1.2rem}
+.logo span{color:var(--blue)}
+nav ul{display:flex;gap:28px;list-style:none;font-size:.95rem;font-weight:500}
+nav ul a{color:var(--muted);transition:color .2s}
+nav ul a:hover,nav ul a.active{color:var(--blue)}
+.btn{display:inline-block;padding:13px 26px;border-radius:10px;font-weight:700;font-size:.95rem;transition:transform .2s,box-shadow .2s,background .2s;border:2px solid var(--ink);cursor:pointer;font-family:var(--body)}
+.btn.primary{background:var(--blue);border-color:var(--blue);color:#fff}
+.btn.primary:hover{transform:translateY(-3px);box-shadow:0 10px 24px rgba(47,91,255,.35)}
+.btn.ghost:hover{background:var(--ink);color:#fff}
+.menu{display:none;background:none;border:0;font-size:1.6rem;cursor:pointer;color:var(--ink)}
+
+/* hero */
+.hero{padding:56px 0 72px;background:radial-gradient(circle at 12% 18%,rgba(255,138,61,.28),transparent 42%),radial-gradient(circle at 88% 12%,rgba(123,77,255,.30),transparent 45%),radial-gradient(circle at 70% 95%,rgba(18,181,166,.26),transparent 45%),var(--bg)}
+.hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:48px;align-items:center}
+.hero h1{font-size:clamp(2.2rem,4.6vw,3.6rem);font-weight:800;margin-bottom:16px}
+.role{font-family:var(--mono);font-size:1.05rem;color:var(--blue);margin-bottom:14px;min-height:1.7em}
+.role::after{content:"";display:inline-block;width:9px;height:1.1em;background:var(--orange);margin-left:4px;vertical-align:-3px;animation:blink 1s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
+.hero p{color:var(--muted);max-width:50ch;margin-bottom:28px}
+.cta{display:flex;gap:14px;flex-wrap:wrap}
+.social{display:flex;gap:20px;margin-top:32px;font-weight:500;color:var(--muted)}
+.social a:hover{color:var(--blue)}
+
+/* code card */
+.code{background:var(--code);border-radius:16px;box-shadow:0 30px 60px -20px rgba(15,27,61,.5);overflow:hidden}
+.code-bar{display:flex;gap:8px;align-items:center;padding:14px 18px;background:#182650;color:#8FA0D6;font-family:var(--mono);font-size:.78rem}
+.dot{width:11px;height:11px;border-radius:50%;background:#FF6B6B}.dot:nth-child(2){background:#FFC857}.dot:nth-child(3){background:#4ADE80}
+.code-bar span{margin-left:10px}
+pre{padding:16px 18px 20px;font-family:var(--mono);font-size:.74rem;line-height:1.75;color:#DCE4FF;min-height:0;overflow-x:auto;white-space:pre}
+.k{color:#FF9D5C}.t{color:#7FB0FF}.s{color:#8EE6A8}.c{color:#6E7DB0}
+.ln{opacity:0;animation:in .4s forwards}
+@keyframes in{to{opacity:1}}
+
+/* hero photo */
+.hero-visual{display:flex;flex-direction:column;align-items:center;gap:30px;width:100%;max-width:400px;justify-self:center}
+.hero-photo{position:relative;width:260px;aspect-ratio:1/1;border-radius:28px;overflow:hidden;background:linear-gradient(135deg,var(--blue),var(--violet));display:grid;place-items:center;font-family:var(--display);font-weight:800;font-size:4rem;color:#fff;box-shadow:12px 12px 0 var(--orange),0 24px 40px -18px rgba(15,27,61,.4)}
+.hero-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 12%}
+.hero-visual .code{width:100%}
+
+/* about */
+.about{display:grid;grid-template-columns:1.3fr 1fr;gap:48px;align-items:center}
+.about p{color:var(--muted);margin-bottom:16px}
+.stats{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.stat{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:24px}
+.stat b{font-family:var(--display);font-size:2.4rem;color:var(--blue);display:block;line-height:1}
+.stat{border-top:5px solid var(--blue)}.stat:nth-child(2){border-top-color:var(--orange)}.stat:nth-child(2) b{color:var(--orange)}.stat:nth-child(3){border-top-color:var(--teal)}.stat:nth-child(3) b{color:var(--teal)}.stat:nth-child(4){border-top-color:var(--pink)}.stat:nth-child(4) b{color:var(--pink)}
+.stat small{color:var(--muted)}
+
+/* skills */
+.skills{background:linear-gradient(135deg,#DDF7F2,#E4ECFF);border-block:1px solid var(--line)}
+#projects{background:linear-gradient(135deg,#FFE9DA,#FFE1EC)}
+#about{background:#fff}
+#education{background:linear-gradient(135deg,#EFE8FF,#E4ECFF)}
+#experience{background:var(--bg)}
+.skill-groups{display:grid;grid-template-columns:repeat(3,1fr);gap:40px}
+.skill-groups h3{font-size:1.3rem;margin-bottom:20px}
+.bar{margin-bottom:18px}
+.bar div:first-child{display:flex;justify-content:space-between;font-size:.92rem;font-weight:500;margin-bottom:6px}
+.track{height:8px;background:var(--blue-soft);border-radius:8px;overflow:hidden}
+.fill{height:100%;width:0;background:var(--blue);border-radius:8px;transition:width 1.3s cubic-bezier(.2,.8,.2,1)}
+.g2 .fill{background:linear-gradient(90deg,var(--orange),var(--pink))}.skill-groups>div:first-child .fill{background:linear-gradient(90deg,var(--blue),var(--violet))}.skill-groups>div:last-child .fill{background:linear-gradient(90deg,var(--teal),#4ADE80)}
+.tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:48px}
+.tags span{font-family:var(--mono);font-size:.8rem;padding:6px 12px;border:1px solid var(--line);border-radius:999px;color:var(--muted);background:var(--bg)}
+
+/* timeline */
+.timeline{position:relative;padding-left:34px;border-left:2px solid var(--line)}
+.job{position:relative;margin-bottom:44px}
+.job:last-child{margin-bottom:0}
+.job::before{content:"";position:absolute;left:-43px;top:6px;width:14px;height:14px;border-radius:50%;background:var(--blue);border:3px solid var(--bg)}
+.job time{font-family:var(--mono);font-size:.82rem;color:var(--blue)}
+.job h3{font-size:1.4rem;margin:4px 0}
+.job .co{color:var(--muted);font-weight:500;margin-bottom:10px}
+.job ul{padding-left:18px;color:var(--muted)}
+.job li{margin-bottom:6px}
+
+/* projects */
+.projects{display:grid;grid-template-columns:repeat(2,1fr);gap:24px}
+.project{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:32px;display:flex;flex-direction:column;transition:transform .3s,box-shadow .3s,border-color .3s}
+.project:hover{transform:translateY(-6px);box-shadow:0 20px 40px -18px rgba(47,91,255,.35);border-color:var(--blue)}
+.project{border-top:6px solid var(--blue)}.project:nth-child(2){border-top-color:var(--orange)}.project:nth-child(3){border-top-color:var(--teal)}.project:nth-child(4){border-top-color:var(--pink)}.project:nth-child(5){border-top-color:var(--violet)}
+.project:last-child:nth-child(odd){grid-column:1/-1}
+.project h3{font-size:1.5rem;margin-bottom:10px}
+.project p{color:var(--muted);flex:1;margin-bottom:18px}
+.stack{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px}
+.stack span{font-family:var(--mono);font-size:.76rem;background:var(--blue-soft);color:var(--blue);padding:4px 10px;border-radius:6px}
+.company{font-size:.88rem;font-weight:700;color:var(--muted)}
+
+/* education + contact */
+.edu{display:grid;grid-template-columns:repeat(2,1fr);gap:24px}
+.edu div{background:var(--surface);border:1px solid var(--line);border-left:5px solid var(--violet);border-radius:14px;padding:26px}
+.edu h3{font-size:1.2rem;margin-bottom:4px}.edu p{color:var(--muted);font-size:.95rem}
+.contact{background:radial-gradient(circle at 85% 10%,rgba(123,77,255,.55),transparent 45%),radial-gradient(circle at 5% 95%,rgba(255,138,61,.30),transparent 40%),var(--ink);color:#fff}
+.contact .lead{color:#AEB9DD}
+.contact-grid{display:grid;grid-template-columns:1fr 1.1fr;gap:56px}
+.contact a.mail{font-family:var(--display);font-size:clamp(1.2rem,2.6vw,1.8rem);font-weight:700;color:var(--orange);word-break:break-all}
+.contact ul{list-style:none;margin-top:22px;color:#AEB9DD}
+.contact li{margin-bottom:8px}
+.contact li a:hover{color:#fff;text-decoration:underline}
+form{display:grid;gap:14px}
+input,textarea{width:100%;padding:14px 16px;border-radius:10px;border:1px solid #33437A;background:#16254F;color:#fff;font:inherit}
+input::placeholder,textarea::placeholder{color:#8190C2}
+textarea{min-height:130px;resize:vertical}
+footer{padding:26px 0;text-align:center;color:var(--muted);font-size:.9rem}
+
+/* reveal */
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .7s,transform .7s}
+.reveal.show{opacity:1;transform:none}
+
+@media(max-width:860px){
+  section{padding:56px 0}
+  .hero-grid,.about,.contact-grid{grid-template-columns:1fr}
+  .hero-visual{max-width:360px}
+  .skill-groups,.projects,.edu{grid-template-columns:1fr}
+  .menu{display:block}
+  nav ul{position:absolute;top:64px;left:0;right:0;background:var(--bg);flex-direction:column;padding:20px 24px;gap:16px;border-bottom:1px solid var(--line);display:none}
+  nav ul.open{display:flex}
+  .code{transform:none}
+}
+@media(prefers-reduced-motion:reduce){
+  *{animation:none!important;transition:none!important}
+  .reveal{opacity:1;transform:none}.ln{opacity:1}.fill{width:var(--w)!important}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <nav aria-label="Main">
+      <a href="#home" class="logo">Vignesh<span>M</span></a>
+      <button class="menu" aria-label="Toggle menu" id="menu">&#9776;</button>
+      <ul id="links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#education">Education</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main>
+<section class="hero" id="home">
+  <div class="wrap hero-grid">
+    <div>
+      <div class="role" id="role" aria-live="polite"></div>
+      <h1>Hi, I'm <span style="white-space:nowrap">Vignesh M.</span><br>I build responsive web and mobile apps people enjoy.</h1>
+      <p>Frontend Developer with 2+ years of experience building and deploying React JS and React Native applications for real users.</p>
+      <div class="cta">
+        <a href="#projects" class="btn primary">View my projects</a>
+        <a href="resume.pdf" class="btn ghost" download="Vignesh_M_Resume.pdf">Download resume</a>
+      </div>
+      <div class="social">
+        <a href="https://github.com/rajvicky64" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://linkedin.com/in/vignesh-m-b23a0326b" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="mailto:rajvicky1906@gmail.com">Email</a>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="hero-photo">VM<img src="photo.jpeg" alt="Portrait of Vignesh M" onerror="this.remove()"></div>
+      <div class="code" aria-hidden="true">
+      <div class="code-bar"><i class="dot"></i><i class="dot"></i><i class="dot"></i><span>Developer.jsx</span></div>
+<pre id="pre"></pre>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="about">
+  <div class="wrap about">
+    <div class="reveal">
+      <h2>Clean code, smooth interfaces</h2>
+      <p>I'm a Frontend Developer who turns UI designs into fast, responsive web and mobile apps. I work with JavaScript, React JS and React Native, and connect them to backends through REST APIs.</p>
+      <p>At Lider Technology Solutions I have built production apps for schools, businesses, marketing networks and exam aspirants, including SLMS, ERP, MLM, TNPSC and NEET/JEE projects.</p>
+      <p>I care about clean architecture and performance, and I'm looking for a Frontend or React developer role where I can keep growing with a strong team.</p>
+    </div>
+    <div class="stats reveal">
+      <div class="stat"><b data-count="2" data-suffix="+">0</b><small>Years of experience</small></div>
+      <div class="stat"><b data-count="5">0</b><small>Production projects</small></div>
+      <div class="stat"><b data-count="2">0</b><small>React Native apps</small></div>
+      <div class="stat"><b data-count="4">0</b><small>User roles in SLMS</small></div>
+    </div>
+  </div>
+</section>
+
+<section class="skills" id="skills">
+  <div class="wrap">
+    <h2 class="reveal">Skills</h2>
+    <p class="lead reveal">The tools I use most, grouped by where they sit in the stack.</p>
+    <div class="skill-groups reveal">
+      <div>
+        <h3>Frontend</h3>
+        <div class="bar"><div><span>HTML5 &amp; CSS3</span><span>92%</span></div><div class="track"><div class="fill" data-w="92"></div></div></div>
+        <div class="bar"><div><span>JavaScript</span><span>88%</span></div><div class="track"><div class="fill" data-w="88"></div></div></div>
+        <div class="bar"><div><span>React JS</span><span>88%</span></div><div class="track"><div class="fill" data-w="88"></div></div></div>
+        <div class="bar"><div><span>Responsive Web Design</span><span>90%</span></div><div class="track"><div class="fill" data-w="90"></div></div></div>
+      </div>
+      <div class="g2">
+        <h3>Mobile &amp; UI</h3>
+        <div class="bar"><div><span>React Native</span><span>82%</span></div><div class="track"><div class="fill" data-w="82"></div></div></div>
+        <div class="bar"><div><span>Material Design</span><span>80%</span></div><div class="track"><div class="fill" data-w="80"></div></div></div>
+        <div class="bar"><div><span>Custom Components</span><span>85%</span></div><div class="track"><div class="fill" data-w="85"></div></div></div>
+        <div class="bar"><div><span>REST API Integration</span><span>86%</span></div><div class="track"><div class="fill" data-w="86"></div></div></div>
+      </div>
+      <div>
+        <h3>Data &amp; Tools</h3>
+        <div class="bar"><div><span>SQL</span><span>70%</span></div><div class="track"><div class="fill" data-w="70"></div></div></div>
+        <div class="bar"><div><span>Git &amp; GitHub</span><span>85%</span></div><div class="track"><div class="fill" data-w="85"></div></div></div>
+        <div class="bar"><div><span>Postman</span><span>80%</span></div><div class="track"><div class="fill" data-w="80"></div></div></div>
+        <div class="bar"><div><span>Netlify / AWS (Basic)</span><span>65%</span></div><div class="track"><div class="fill" data-w="65"></div></div></div>
+      </div>
+    </div>
+    <div class="tags reveal">
+      <span>Firebase</span><span>JSON Parsing</span><span>HTTP Requests</span><span>Android Studio</span><span>VS Code</span><span>Responsive Layouts</span><span>Problem Solving</span><span>Debugging</span><span>Performance Optimization</span><span>Agile</span>
+    </div>
+  </div>
+</section>
+
+<section id="experience">
+  <div class="wrap">
+    <h2 class="reveal">Experience</h2>
+    <p class="lead reveal">Where I've worked.</p>
+    <div class="timeline">
+      <div class="job reveal">
+        <time>Jan 2025 - Present</time>
+        <h3>Frontend Developer</h3>
+        <div class="co">Lider Technology Solutions</div>
+        <ul>
+          <li>Develop responsive web and mobile interfaces using React JS, React Native and modern frontend technologies.</li>
+          <li>Built SLMS (School Learning Management System) with student enrollment, attendance, timetable scheduling and result tracking, with role-based access for Admin, Teachers, Students and Parents.</li>
+          <li>Developed an ERP Management System with employee management, reporting dashboards, data handling and workflow management.</li>
+          <li>Built an MLM application with referral tree visualization, commission tracking, downline management and wallet features.</li>
+          <li>Built TNPSC exam-preparation and NEET/JEE mobile apps in React Native, tested and debugged with Android Studio.</li>
+          <li>Integrated REST APIs, optimized frontend performance and worked closely with UI/UX designs.</li>
+          <li>Took part in deployment (Netlify, AWS basics), maintenance, bug fixing and post-release support.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="projects" class="skills">
+  <div class="wrap">
+    <h2 class="reveal">Projects</h2>
+    <p class="lead reveal">Selected work built at Lider Technology Solutions.</p>
+    <div class="projects">
+      <article class="project reveal">
+        <h3>ERP Management System</h3>
+        <p>Employee and business management platform with employee records, attendance tracking, payroll handling, workflow management and reporting dashboards. Includes role-based access and a responsive UI.</p>
+        <div class="stack"><span>React JS</span><span>REST APIs</span></div>
+        <div class="company">Lider Technology</div>
+      </article>
+      <article class="project reveal">
+        <h3>School Learning Management System</h3>
+        <p>School platform covering student enrollment, attendance, timetable scheduling, assignments, exams and result tracking. Secure login with role-based access for Admin, Teachers, Students and Parents.</p>
+        <div class="stack"><span>React JS</span><span>REST APIs</span><span>Auth</span></div>
+        <div class="company">Lider Technology</div>
+      </article>
+      <article class="project reveal">
+        <h3>MLM: Multi-Level Marketing</h3>
+        <p>Network marketing platform with referral tree visualization, commission calculation, downline management and an integrated wallet for payouts. Real-time updates and an earnings dashboard with charts.</p>
+        <div class="stack"><span>React JS</span><span>Firebase</span></div>
+        <div class="company">Lider Technology</div>
+      </article>
+      <article class="project reveal">
+        <h3>TNPSC Exam Preparation App</h3>
+        <p>Mobile app for TNPSC aspirants with mock tests, question banks and performance tracking. Built with REST API integration and tested on the Android Studio emulator.</p>
+        <div class="stack"><span>React Native</span><span>REST APIs</span></div>
+        <div class="company">Lider Technology</div>
+      </article>
+      <article class="project reveal">
+        <h3>NEET/JEE Mobile App</h3>
+        <p>Learning and exam-prep app for NEET/JEE students with timed tests, question banks and performance analysis. Includes secure login and REST API integration.</p>
+        <div class="stack"><span>React Native</span><span>REST APIs</span></div>
+        <div class="company">Lider Technology</div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="education">
+  <div class="wrap">
+    <h2 class="reveal">Education &amp; certification</h2>
+    <div class="edu reveal" style="margin-top:32px">
+      <div><h3>B.Tech Information Technology</h3><p>Dr MGR University, 2018 - 2022<br>CGPA: 8.1 / 10</p></div>
+      <div><h3>Full Stack Web Development</h3><p>6-month professional course, Jul 2024 - Dec 2024<br>HTML5, CSS3, JavaScript, React JS, REST APIs, SQL, Git &amp; GitHub</p></div>
+      <div><h3>HSC</h3><p>GVT Boys Higher Secondary School, 2017 - 2018<br>75%</p></div>
+      <div><h3>SSLC</h3><p>GVT Boys Higher Secondary School, 2015 - 2016<br>88%</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="wrap contact-grid">
+    <div class="reveal">
+      <h2>Let's work together</h2>
+      <p class="lead">I'm open to Frontend and React developer roles. Send a message and I'll reply within a day.</p>
+      <a class="mail" href="mailto:rajvicky1906@gmail.com">rajvicky1906@gmail.com</a>
+      <ul>
+        <li>Phone: <a href="tel:+919384476047">+91-9384476047</a></li>
+        <li>LinkedIn: <a href="https://linkedin.com/in/vignesh-m-b23a0326b" target="_blank" rel="noopener">linkedin.com/in/vignesh-m-b23a0326b</a></li>
+        <li>GitHub: <a href="https://github.com/rajvicky64" target="_blank" rel="noopener">github.com/rajvicky64</a></li>
+        <li>Location: Pudukkottai, Tamil Nadu</li>
+        <li>Languages: English (Fluent), Tamil (Native)</li>
+      </ul>
+    </div>
+    <form class="reveal" id="form">
+      <input type="text" id="n" placeholder="Your name" aria-label="Your name" required>
+      <input type="email" id="e" placeholder="Your email" aria-label="Your email" required>
+      <textarea id="m" placeholder="How can I help?" aria-label="Message" required></textarea>
+      <button class="btn primary" type="submit">Send message</button>
+    </form>
+  </div>
+</section>
+</main>
+
+<footer>&copy; <span id="yr"></span> Vignesh M. Built with HTML, CSS and JavaScript.</footer>
+
+<script>
+// Hero: role typewriter
+const roles=["Frontend Developer","React JS Developer","React Native Developer"];
+const roleEl=document.getElementById("role");
+let ri=0,ci=0,del=false;
+(function type(){
+  const w=roles[ri];
+  roleEl.textContent=w.slice(0,ci);
+  if(!del&&ci===w.length){del=true;return setTimeout(type,1600)}
+  if(del&&ci===0){del=false;ri=(ri+1)%roles.length}
+  ci+=del?-1:1;
+  setTimeout(type,del?40:80);
+})();
+
+// Hero: code card types itself line by line
+const lines=[
+'<span class="k">const</span> <span class="t">developer</span> = {',
+'  name: <span class="s">"Vignesh M"</span>,',
+'  role: <span class="s">"Frontend Developer"</span>,',
+'  experience: <span class="s">"2+ years"</span>,',
+'  stack: [<span class="s">"React JS"</span>, <span class="s">"React Native"</span>],',
+'  openToWork: <span class="k">true</span>,',
+'};',
+'',
+'<span class="k">export default</span> developer;'];
+const pre=document.getElementById("pre");
+lines.forEach((l,i)=>{const d=document.createElement("div");d.className="ln";d.style.animationDelay=(0.6+i*0.35)+"s";d.innerHTML=l||"&nbsp;";pre.appendChild(d)});
+
+// Mobile menu + active link
+const menu=document.getElementById("menu"),links=document.getElementById("links");
+menu.onclick=()=>links.classList.toggle("open");
+links.querySelectorAll("a").forEach(a=>a.onclick=()=>links.classList.remove("open"));
+const navA=[...links.querySelectorAll("a")];
+const spy=new IntersectionObserver(es=>es.forEach(e=>{
+  if(e.isIntersecting)navA.forEach(a=>a.classList.toggle("active",a.getAttribute("href")==="#"+e.target.id));
+}),{rootMargin:"-45% 0px -50% 0px"});
+document.querySelectorAll("main section[id]").forEach(s=>spy.observe(s));
+
+// Scroll reveal, skill bars, counters
+const io=new IntersectionObserver(es=>es.forEach(e=>{
+  if(!e.isIntersecting)return;
+  const el=e.target;el.classList.add("show");
+  el.querySelectorAll(".fill").forEach(f=>{f.style.setProperty("--w",f.dataset.w+"%");f.style.width=f.dataset.w+"%"});
+  el.querySelectorAll("[data-count]").forEach(c=>{
+    const to=+c.dataset.count,suffix=c.dataset.suffix||"";let n=0;const step=Math.max(1,Math.ceil(to/40));
+    const t=setInterval(()=>{n=Math.min(to,n+step);c.textContent=n+(n>=to?suffix:"");if(n>=to)clearInterval(t)},35);
+  });
+  io.unobserve(el);
+}),{threshold:.2});
+document.querySelectorAll(".reveal").forEach(el=>io.observe(el));
+
+// Contact form opens the visitor's mail app
+document.getElementById("form").onsubmit=ev=>{
+  ev.preventDefault();
+  const n=encodeURIComponent(document.getElementById("n").value),m=encodeURIComponent(document.getElementById("m").value+"\n\nFrom: "+document.getElementById("e").value);
+  location.href="mailto:rajvicky1906@gmail.com?subject="+encodeURIComponent("Portfolio message from ")+n+"&body="+m;
+};
+document.getElementById("yr").textContent=new Date().getFullYear();
+</script>
+</body>
+</html>
